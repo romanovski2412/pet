@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Pets</title>
+</head>
+<body>
+<div class="container">
+    <a href="/">:Животные</a>
+    <a>Домашние животные</a>
+    <a href="logout">Выйти из аккаунта</a>
+    <hr>
+    <a href="create-pet">Добавить домашнее животное</a>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Кличка</th>
+            <th scope="col">Порода</th>
+            <th scope="col">Цвет</th>
+            <th scope="col">Возраст</th>
+            <th scope="col">Удаление</th>
+            <th scope="col">Обновление</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pet: ${pets}">
+            <td th:text="${pet.id}"></td>
+            <td th:text="${pet.name}"></td>
+            <td th:text="${pet.breed}"></td>
+            <td th:text="${pet.color}"></td>
+            <td th:text="${pet.age}"></td>
+            <th scope="row" th:text="${pet.animal.breed}"></th>
+            <td>
+                <a class="text-danger" th:href="@{delete-pet(id=${pet.id})}">Удалить</a>
+            </td>
+            <td>
+                <a th:href="@{update-pet(id=${pet.id})}">Обновить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
